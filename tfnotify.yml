@@ -1,0 +1,23 @@
+ci: codebuild
+notifier:
+  github:
+    token: $GITHUB_TOKEN
+    repository:
+      owner: "UMEKI-Takahiro"
+      name: "pragmatic-terraform1-ca"
+terraform:
+  plan:
+    template: |
+      {{ .Title }}
+      {{ .Message }}
+      {{if .Result}}<pre><code> {{ .Result }} </pre></code>{{end}}
+      <details><summary>Details (Click me)</summary>
+      <pre><code> {{ .Body }} </pre></code></details>
+  apply:
+    template: |
+      {{ .Title }}
+      {{ .Message }}
+      {{if .Result}}<pre><code> {{ .Result }} </pre></code>{{end}}
+      <details><summary>Details (Click me)</summary>
+      <pre><code> {{ .Body }} </pre></code></details>
+
